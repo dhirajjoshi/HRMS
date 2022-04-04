@@ -3,8 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  teamLeader: ['Dhiraj', 'Himanshu'],
+  projectManager:['Dhiraj','Himanshu','Yashraj'],
+  departmentType:['Android','Java'],
   production: false
 };
+  
+
 
 /*
  * For easier debugging in development mode, you can import the following file

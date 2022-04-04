@@ -8,3 +8,7 @@
 /* toastr style  */
 
 @import '~ngx-toastr/toastr';
+
+/* Ng Select */
+
+@import "~@ng-select/ng-select/themes/default.theme.css";

@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="fg">
+            <div class="row">
+                <!-- Department Type -->
+                <div class="col">
+
+                    <input required type="text" class="form-control" autocomplete formControlName="departmentType" placeholder='Enter department type' />
+
+                    <!-- Validation -->
+                    <!-- <div *ngIf="controls['departmentType']?.pending ">
+                        <sa-spinner-circular-fixed styles='{"background-color":"transparent"}'></sa-spinner-circular-fixed>
+                    </div> -->
+
+                    <div *ngIf="controls['departmentType']?.touched && controls['departmentType']?.invalid || isFormSubmitted" style="color: red;">
+                        <div *ngIf="controls['departmentType']?.errors?.['required']">Department Type is Required</div>
+                        <!-- <div *ngIf="controls['departmentType']?.errors?.['shouldBeUnique']">Department Already In use</div> -->
+                        <div *ngIf="controls['departmentType']?.errors?.['minlength']">Atleast {{ controls['departmentType'].errors?.['maxlength'].requiredLength }} char</div>
+                        <div *ngIf="controls['departmentType']?.errors?.['pattern'] ">Only character are allowed</div>
+                    </div>
+                </div>
+                <!-- Team Leader -->
+                <div class="col">
+                    <ng-select [items]="teamLead" bindLabel="teamLead" formControlName="teamLead" placeholder="Team Leader" [multiple]="true"></ng-select>
+                    <!-- Validation -->
+                    <div *ngIf="controls['teamLead']?.touched && controls['teamLead']?.invalid || isFormSubmitted" style="color: red;">
+                        <div *ngIf="controls['teamLead']?.errors?.['required']">Team Leader is Required</div>
+                    </div>
+                </div>
+                <!-- Project Manager -->
+                <div class="col">
+                    <div class="directorist-select directorist-select-multi" id="multiSelect" data-isSearch="true">
+                        <ng-select [items]="projectManager" bindLabel="projectManager" formControlName="projectManager" placeholder="Project Manager" [multiple]="true"></ng-select>
+                    </div>
+                    <!-- Validation -->
+                    <div *ngIf="controls['projectManager']?.touched && controls['projectManager']?.invalid || isFormSubmitted" style="color: red;">
+                        <div *ngIf="controls['projectManager']?.errors?.['required'] ">Department Type is Required</div>
+                    </div>
+                </div>
+                <!-- Check Box -->
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" formControlName="isActive" type="checkbox" value="" id="status" checked>
+                        <label class="form-check-label" for="status">
+                          Status
+                        </label>
+                    </div>
+                </div>
+                <!-- Button  -->
+                <div class="col">
+                    <button class="btn btn-primary" style="background-color:yellow; color:Black" (click)="save()">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-display-department [department]="department"></app-display-department>
