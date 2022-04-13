@@ -19,6 +19,7 @@ export class AddDepartmentComponent {
   department:any=[]
   fg: any;
   isFormSubmitted=false
+  departmentType:any=[]
   
 
   teamLead:any=[];
@@ -36,10 +37,11 @@ export class AddDepartmentComponent {
     ],
       teamLead:["", Validators.required],
       projectManager:["",Validators.required],
-      isActive:[""]
+      isActive:['']
       })
       this.teamLead=this.data.update('teamLead')
       this.projectManager=this.data.update('projectManager')
+      this.departmentType=this.data.update('departmentType')
   }
 
   get controls(){
@@ -59,13 +61,23 @@ export class AddDepartmentComponent {
         projectManager:this.controls['projectManager'].value,
         status:this.controls['isActive'].value
       }
-      // console.log(environment.departmentType);
-      this.department.push(temp)
-      environment.departmentType.push(this.controls['departmentType'].value)
-      // console.log(environment.departmentType);
+      if(temp.status==''){
+        temp.status=true
+      }
+      else if(temp.status==null){
+        temp.status=false
+      }
+    
+        if(temp.departmentType.toLowerCase()!==this.departmentType[0].toLowerCase())
+          {
+            this.departmentType.push(temp.departmentType)
+            this.department.push(temp)
+            this.showToastr('Department Added','Success')
+          }
+        else{
+            this.showToastr('Department Type is there','Error')
+          }  
       
-      // console.log(this.department);   
-      this.showToastr('Department Added','Success')
       this.fg.reset();
       this.isFormSubmitted=false
     } 

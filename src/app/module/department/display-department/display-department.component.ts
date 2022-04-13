@@ -7,22 +7,36 @@ import { Component, Input, OnInit} from '@angular/core';
 })
 export class DisplayDepartmentComponent implements OnInit {
   @Input() department: any[1];
+  titleSortFlag=false
+  titleList=[];
   // collection:any=[]
   p=1
   constructor() { 
+    this.titleList=this.department.departmentType
   }
   ngOnInit(): void {
-    console.log(this.department);  
+    console.log(this.department);
+     
   }
-
-    // if(this.department==undefined||this.department==null){
-    // }
-    // else{
-    //   for (let i = 0; i < this.department.length; i++) {
-    //     this.collection.push(this.department[i]);
-    //   }
-    // }
-
   editDepartment(){}
-  deleteDepartment(){ }
+  deleteDepartment(){}
+  // sortTitle() {
+  //   this.titleSortFlag = !this.titleSortFlag;
+  //   this.titleList.sort((a: this.department.departmentType, b: this.department.departmentType) => {
+  //     if (a.title < b.title) {
+  //       if (this.titleSortFlag) {
+  //         return 1;
+  //       } else {
+  //         return -1;
+  //       }
+  //     } else if (a.title > b.title) {
+  //       if (this.titleSortFlag) {
+  //         return -1;
+  //       } else {
+  //         return 1;
+  //       }
+  //     }
+  //     return 0;
+  //   });
+  // }
 }

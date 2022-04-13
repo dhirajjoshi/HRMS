@@ -14,7 +14,7 @@ export class CustomVelidators{
                 let departmentType=environment.departmentType
                 // console.log(control.value.toUpperCase());
                 for (let i = 0; i < departmentType.length; i++) {    
-                    if(control.value.toUpperCase()  === departmentType[i].toUpperCase()){
+                    if(control.value.toLowerCase()  === departmentType[i].toLowerCase()){
                         resolve({ shouldBeUnique:true})
                         break
                     }
