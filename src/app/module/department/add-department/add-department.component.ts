@@ -7,7 +7,8 @@ import { SpinnersAngularModule } from 'spinners-angular';
 import { Regex } from 'src/app/shared/utility/regex.utility';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { DepartmentService } from 'src/app/core/services/department/department.service';
-
+// import { uuid } from 'uuidv4'
+import { v4 as uuidv4 } from 'uuid'
 
 @Component({
   selector: 'app-add-department',
@@ -17,6 +18,7 @@ import { DepartmentService } from 'src/app/core/services/department/department.s
 export class AddDepartmentComponent {
 
   department:any=[]
+  _editValueId:any;
   fg: any;
   isFormSubmitted=false
   departmentType:any=[]
@@ -48,14 +50,13 @@ export class AddDepartmentComponent {
     return this.fg.controls;
   }
 
-  save(){
+  add(){
     this.isFormSubmitted=true
 // console.log(this.controls['teamLead'].value);
     if(this.fg.valid){
       let temp=null;
-      // console.log(uuid());
-      
       temp={
+        departmentId:uuidv4(),
         departmentType:this.controls['departmentType'].value,
         teamLeader:this.controls['teamLead'].value,
         projectManager:this.controls['projectManager'].value,
@@ -95,6 +96,21 @@ export class AddDepartmentComponent {
     }
     else{
       this.toastr.error(_value,_status)
+    }
+  }
+
+  edit(editValue:any){
+    this._editValueId=editValue.id;
+
+    if(editValue.departmentId){
+      console.log(editValue);
+      
+      (<HTMLInputElement>document.getElementById('departmentType')).value=editValue.departmentType;
+      // (<HTMLInputElement>document.getElementById('teamLead')).value=editValue.teamLead;
+      (<HTMLInputElement>document.getElementById('teamLead')).value='Dhiraj';
+      (<HTMLInputElement>document.getElementById('projectManager')).value=editValue.projectManager;
+      (<HTMLInputElement>document.getElementById('status')).value=editValue.status;
+      
     }
   }
 }

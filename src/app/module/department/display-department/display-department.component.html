@@ -1,7 +1,11 @@
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <table class="table">
     <thead class="thead-light">
         <tr>
-            <th scope="col" (click)="sortTitle()">Title</th>
+            <th scope="col">Title</th>
             <th scope="col">Status</th>
             <th scope="col">Team Leader</th>
             <th scope="col">Project Manager</th>
@@ -25,8 +29,8 @@
             <td>{{dep.teamLeader}}</td>
             <td>{{dep.projectManager}}</td>
             <td>
-                <button class="btn btn-primary" style="background-color:transparent; color:red; border: 0px;" (click)="editDepartment()"><i class="fa fa-edit"></i></button>
-                <button class="btn btn-primary" style="background-color:transparent; color:red; border: 0px;" (click)="deleteDepartment()"><i class="fa fa-trash-o"></i></button>
+                <button class="btn btn-primary" style="background-color:transparent; color:red; border: 0px;" (click)="editDepartment(dep)"><i class="fa fa-edit"></i></button>
+                <button class="btn btn-primary" style='background-color:transparent; color:red; border: 0px;' (click)="deleteDepartment(dep)"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
     </tbody>

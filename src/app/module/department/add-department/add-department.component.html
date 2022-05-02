@@ -5,7 +5,7 @@
                 <!-- Department Type -->
                 <div class="col">
 
-                    <input required type="text" class="form-control" autocomplete formControlName="departmentType" placeholder='Enter department type' />
+                    <input required id="departmentType" type="text" class="form-control" autocomplete formControlName="departmentType" placeholder='Enter department type' />
 
                     <!-- Validation -->
                     <!-- <div *ngIf="controls['departmentType']?.pending ">
@@ -21,7 +21,7 @@
                 </div>
                 <!-- Team Leader -->
                 <div class="col">
-                    <ng-select [items]="teamLead" bindLabel="teamLead" formControlName="teamLead" placeholder="Team Leader" [multiple]="true"></ng-select>
+                    <ng-select id="teamLead" [items]="teamLead" bindLabel="teamLead" formControlName="teamLead" placeholder="Team Leader" [multiple]="true"></ng-select>
                     <!-- Validation -->
                     <div *ngIf="controls['teamLead']?.touched && controls['teamLead']?.invalid || isFormSubmitted" style="color: red;">
                         <div *ngIf="controls['teamLead']?.errors?.['required']">Team Leader is Required</div>
@@ -29,8 +29,8 @@
                 </div>
                 <!-- Project Manager -->
                 <div class="col">
-                    <div class="directorist-select directorist-select-multi" id="multiSelect" data-isSearch="true">
-                        <ng-select [items]="projectManager" bindLabel="projectManager" formControlName="projectManager" placeholder="Project Manager" [multiple]="true"></ng-select>
+                    <div class="directorist-select directorist-select-multi" data-isSearch="true">
+                        <ng-select id="projectManager" [items]="projectManager" bindLabel="projectManager" formControlName="projectManager" placeholder="Project Manager" [multiple]="true"></ng-select>
                     </div>
                     <!-- Validation -->
                     <div *ngIf="controls['projectManager']?.touched && controls['projectManager']?.invalid || isFormSubmitted" style="color: red;">
@@ -48,11 +48,11 @@
                 </div>
                 <!-- Button  -->
                 <div class="col">
-                    <button class="btn btn-primary" style="background-color:yellow; color:Black" (click)="save()">Save</button>
+                    <button class="btn btn-primary" style="background-color:yellow; color:Black" (click)="add()">Add</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-<app-display-department [department]="department"></app-display-department>
+<app-display-department [department]="department" (editValue)="edit($event)"></app-display-department>
